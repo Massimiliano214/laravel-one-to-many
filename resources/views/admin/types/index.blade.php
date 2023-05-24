@@ -21,7 +21,7 @@
                         <form action="{{route('admin.types.destroy', ['type' => $type->id])}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger delete">Elimina</button>
+                            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger delete">Elimina</button>
                         </form>
                     </td>
                 </tr>
