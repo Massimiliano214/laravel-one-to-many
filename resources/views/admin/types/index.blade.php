@@ -15,8 +15,14 @@
                 <tr>
                     <td>{{$type->id}}</td>
                     <td>{{$type->name}}</td>
-                    <td class="">
-                    
+                    <td class="d-flex">
+                        <a class="btn btn-primary me-3" href="{{route('admin.types.show', ['type' => $type->id])}}">Dettagli</a>
+                        <a class="btn btn-secondary me-3" href="{{route('admin.types.edit', ['type' => $type->id])}}">Modifica</a>
+                        <form action="{{route('admin.types.destroy', ['type' => $type->id])}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger delete">Elimina</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

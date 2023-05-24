@@ -63,8 +63,9 @@ class TypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Type $type)
-    {
-        //
+    {   
+        
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -75,8 +76,10 @@ class TypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Type $type)
-    {
-        //
+    { 
+        $form_data = $request->all();
+        $type->update($form_data);
+        return redirect()->route('admin.types.show', ['type' => $type->id])->with('status', 'Tipologia modificata con successo!');
     }
 
     /**
@@ -87,6 +90,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('admin.types.index');
     }
 }
