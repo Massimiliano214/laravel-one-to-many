@@ -26,7 +26,7 @@ class UpdateTypeRequest extends FormRequest
     {
         
         return [
-            'title' => 'required|max:100|unique:types'
+            'name' => 'required|max:100|unique:types'
         ];
     }
 }
