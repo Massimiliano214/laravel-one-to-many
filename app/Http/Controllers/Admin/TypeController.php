@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
 class TypeController extends Controller
 {
     /**
@@ -35,13 +36,10 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        $form_data = $request->all();
-        $newType = new Type();
-        $newType->name = $form_data['name'];
-        $newType->save();
-
+        $validated_data = $request->validated();
+        $newType = Type::create($validated_data);
         return redirect()->route('admin.types.show', ['type' => $newType->id])->with('status', 'Tipologia creato con successo!');
     }
 
@@ -75,10 +73,10 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(UpdateTypeRequest $request, Type $type)
     { 
-        $form_data = $request->all();
-        $type->update($form_data);
+        $validated_data = $request->validated();
+        $type->update($validated_data);
         return redirect()->route('admin.types.show', ['type' => $type->id])->with('status', 'Tipologia modificata con successo!');
     }
 
