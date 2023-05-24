@@ -22,5 +22,5 @@
                 @endforeach
             </tbody>      
     </table>
-    <a href="#" class="btn btn-secondary">Aggiungi Tipologia</a>
+    <a href="{{route('admin.types.create')}}" class="btn btn-secondary">Aggiungi Tipologia</a>
 @endsection
