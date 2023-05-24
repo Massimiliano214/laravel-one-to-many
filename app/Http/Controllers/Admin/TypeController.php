@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admi;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $type = Type::all();
-        return view('admin.type.index', compact('type'));
+        $types = Type::all();
+        return view('admin.types.index', compact('types'));
     }
 
     /**

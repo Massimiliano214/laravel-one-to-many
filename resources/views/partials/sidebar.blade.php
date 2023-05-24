@@ -14,7 +14,16 @@
                 <svg class="bi pe-none me-2" width="16" height="16">
                     <use xlink:href="#home"></use>
                 </svg>
-                Posts
+                Progetti
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{route('admin.types.index')}}" class="nav-link @if (Route::currentRouteName() == 'admin.types.index') active @endif">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                    <use xlink:href="#home"></use>
+                </svg>
+                Tipologie
             </a>
         </li>
 
